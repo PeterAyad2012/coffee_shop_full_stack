@@ -69,7 +69,7 @@ pip install -r requirements.txt
 
 ### Running server in development mode
 
-##### Run Frontend
+#### Run Frontend
 
 Ionic ships with a useful development server which detects changes and transpiles as you work. The application is then accessible through the browser on a localhost port. To run the development server, cd into the `frontend` directory and run:
 
