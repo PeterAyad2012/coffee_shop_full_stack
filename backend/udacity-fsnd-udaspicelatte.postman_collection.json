@@ -1,0 +1,673 @@
+{
+	"info": {
+		"_postman_id": "4250ecbd-8093-474e-8317-bd77cfb7b856",
+		"name": "Coffee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "No Auth",
+			"item": [
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks endpoint without authentication\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwL2hlYWRlcnMiLCJpYXQiOjE2MTQxMTkyOTcsImV4cCI6MTYxNDEyNjQ5NywiYXpwIjoiZm5TQUJnSE1Hdk5GUDA5SzViUkRVb1psd21vMkxLVFAiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImdldDppbWFnZSJdfQ.TVPeV0mKE2BVhxibMQ3JiasLKt-wlTiJJhtHo9PXJccF9TtpQ3T246Esrb8D40KakvcT_wO3Dgl0sdupcVxLU-gndRCMDKfP5fzsDt0R3wJEpi6DdkjC9cK-Z66a-hI9OKpidy4VAwRHnbv46bMAGUYfNUNjeQ6zF5rEyOYFOZCx2iU-t5qgDSE5dlxvDdux23W68gVgvNYh5NsCk1KFFYA0skS8pANceyZ86T7CCAb5_DABI2eAMoyf_VKVdq5TtpLxXzq98YyWXouwXgefKb5Rm31uTGB02dl3o5yWqVu_pPdovB4rHqU3mVIxesp98vV2v2BFYosF4tYtwWKp_w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "hitting drinks endpoint without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks-detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks-detail endpoint without authentication\", function(){\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks-detail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						},
+						"description": "hitting drinks-detail endpoint without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add drink without authentication\", function(){\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Green Latte\", \r\n    \"recipe\": [{\"name\": \"Green Foam\", \"color\": \"#BBE794\", \"parts\": 2}, {\"name\": \"Green Coffee\", \"color\": \"#82B157\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "Add drink without Authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"edit on drink without authentication\", function(){\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cappuchino\",\r\n    \"recipe\": [{\"color\": \"#F6F2E6\", \"name\": \"Foam\", \"parts\": 1}, {\"color\": \"#E3D7B4\", \"name\": \"Milk\", \"parts\": 1}, {\"color\": \"#2E1A08\", \"name\": \"Espresso\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"4"
+							]
+						},
+						"description": "edit on drink without authentication"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"delete drink without authentication\", function(){\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barista Auth",
+			"item": [
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks endpoint with Barista account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzYTg5MjA0YjQ5NzkwMDY5MjYwYmEyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDUzNzg4LCJleHAiOjE2MTQ0NjA5ODgsImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.wbDxygeOSQQ8FrmahEY-jkhXCbEcYdxTX_11-fO8YfktBSHBS5TdI6xMvwkIm7E36eNg03Xy9LktqTxvnp1cKp_Ah1KUxEIb0MqcfQSaBaZWU8JlIYLXs3X_QUfB0-7D-CCu6ZswVdEvpU_FXJJZUS5FlKDK9hcO-9P95Qro7WsbZFpocn6BthnSOdKUA16P6iJU3XWdL8HwCTvNQztlClXzIgFySXbumKtQmCjSavIJhDSxzhxwPDwX4ufIxNhhQZi0BOkxtlOov-dQuSkvM2MOoic3Plz3to661qsTsoOS2LXNvPNLiuXpPdyJTfEC6IH2xeDgor24v97IKnA9nQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "access drinks endpoint without Barista account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks-detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks-detail endpoint with Barista account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzYTg5MjA0YjQ5NzkwMDY5MjYwYmEyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDUzNzg4LCJleHAiOjE2MTQ0NjA5ODgsImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.wbDxygeOSQQ8FrmahEY-jkhXCbEcYdxTX_11-fO8YfktBSHBS5TdI6xMvwkIm7E36eNg03Xy9LktqTxvnp1cKp_Ah1KUxEIb0MqcfQSaBaZWU8JlIYLXs3X_QUfB0-7D-CCu6ZswVdEvpU_FXJJZUS5FlKDK9hcO-9P95Qro7WsbZFpocn6BthnSOdKUA16P6iJU3XWdL8HwCTvNQztlClXzIgFySXbumKtQmCjSavIJhDSxzhxwPDwX4ufIxNhhQZi0BOkxtlOov-dQuSkvM2MOoic3Plz3to661qsTsoOS2LXNvPNLiuXpPdyJTfEC6IH2xeDgor24v97IKnA9nQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks-detail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						},
+						"description": "access drinks-detail endpoint with Barista account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add drink with Barista account\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzYTg5MjA0YjQ5NzkwMDY5MjYwYmEyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDUzNzg4LCJleHAiOjE2MTQ0NjA5ODgsImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.wbDxygeOSQQ8FrmahEY-jkhXCbEcYdxTX_11-fO8YfktBSHBS5TdI6xMvwkIm7E36eNg03Xy9LktqTxvnp1cKp_Ah1KUxEIb0MqcfQSaBaZWU8JlIYLXs3X_QUfB0-7D-CCu6ZswVdEvpU_FXJJZUS5FlKDK9hcO-9P95Qro7WsbZFpocn6BthnSOdKUA16P6iJU3XWdL8HwCTvNQztlClXzIgFySXbumKtQmCjSavIJhDSxzhxwPDwX4ufIxNhhQZi0BOkxtlOov-dQuSkvM2MOoic3Plz3to661qsTsoOS2LXNvPNLiuXpPdyJTfEC6IH2xeDgor24v97IKnA9nQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Green Latte\", \r\n    \"recipe\": [{\"name\": \"Green Foam\", \"color\": \"#BBE794\", \"parts\": 2}, {\"name\": \"Green Coffee\", \"color\": \"#82B157\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "Add drink with Barista account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"edit on drink with Barista account\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzYTg5MjA0YjQ5NzkwMDY5MjYwYmEyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDUzNzg4LCJleHAiOjE2MTQ0NjA5ODgsImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.wbDxygeOSQQ8FrmahEY-jkhXCbEcYdxTX_11-fO8YfktBSHBS5TdI6xMvwkIm7E36eNg03Xy9LktqTxvnp1cKp_Ah1KUxEIb0MqcfQSaBaZWU8JlIYLXs3X_QUfB0-7D-CCu6ZswVdEvpU_FXJJZUS5FlKDK9hcO-9P95Qro7WsbZFpocn6BthnSOdKUA16P6iJU3XWdL8HwCTvNQztlClXzIgFySXbumKtQmCjSavIJhDSxzhxwPDwX4ufIxNhhQZi0BOkxtlOov-dQuSkvM2MOoic3Plz3to661qsTsoOS2LXNvPNLiuXpPdyJTfEC6IH2xeDgor24v97IKnA9nQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cappuchino\",\r\n    \"recipe\": [{\"color\": \"#F6F2E6\", \"name\": \"Foam\", \"parts\": 1}, {\"color\": \"#E3D7B4\", \"name\": \"Milk\", \"parts\": 1}, {\"color\": \"#2E1A08\", \"name\": \"Espresso\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"4"
+							]
+						},
+						"description": "edit on drink with Barista account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"delete drink with Barista account\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzYTg5MjA0YjQ5NzkwMDY5MjYwYmEyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDUzNzg4LCJleHAiOjE2MTQ0NjA5ODgsImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6ZHJpbmtzLWRldGFpbCJdfQ.wbDxygeOSQQ8FrmahEY-jkhXCbEcYdxTX_11-fO8YfktBSHBS5TdI6xMvwkIm7E36eNg03Xy9LktqTxvnp1cKp_Ah1KUxEIb0MqcfQSaBaZWU8JlIYLXs3X_QUfB0-7D-CCu6ZswVdEvpU_FXJJZUS5FlKDK9hcO-9P95Qro7WsbZFpocn6BthnSOdKUA16P6iJU3XWdL8HwCTvNQztlClXzIgFySXbumKtQmCjSavIJhDSxzhxwPDwX4ufIxNhhQZi0BOkxtlOov-dQuSkvM2MOoic3Plz3to661qsTsoOS2LXNvPNLiuXpPdyJTfEC6IH2xeDgor24v97IKnA9nQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"4"
+							]
+						},
+						"description": "delete drink with Barista account"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager Auth",
+			"item": [
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks endpoint with Manager account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDU0Mjc5LCJleHAiOjE2MTQ0NjE0NzksImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.RG2QKphJI9MWa1uLKudlJQFhlTcHyDMvFDWxNFp5VWRl9-DKOAChFkNLgXPcU4hx_XvsNgYy8rRIGqPu3DbGH6AZp16bRdXyTRpNLWhdkKctbnI_ARLl2-b_Znh2wgaRkEs_FEnR9htn3NwoVNkKCLcMo-5wPPiSiE3bsp3Wbhn3ehb5Pqq7TfWepu2nFg_9dSoVqnDuux6H3SOcVgDMKIlwbgbRe3X5SEurJxPLKnKbQ7NrEF8L2mW-BnYKZ7VRnQ8NruVaAQA6fN15RaUn7mJu8C955y1Isg6kT-8XfjCNGpq-sdwPZ09HD3PBsckEZ2HKfjP29M5ZGzgI8IAvLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "access drinks endpoint with Manager account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks-detail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"access drinks-detail endpoint with Manager account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDU0Mjc5LCJleHAiOjE2MTQ0NjE0NzksImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.RG2QKphJI9MWa1uLKudlJQFhlTcHyDMvFDWxNFp5VWRl9-DKOAChFkNLgXPcU4hx_XvsNgYy8rRIGqPu3DbGH6AZp16bRdXyTRpNLWhdkKctbnI_ARLl2-b_Znh2wgaRkEs_FEnR9htn3NwoVNkKCLcMo-5wPPiSiE3bsp3Wbhn3ehb5Pqq7TfWepu2nFg_9dSoVqnDuux6H3SOcVgDMKIlwbgbRe3X5SEurJxPLKnKbQ7NrEF8L2mW-BnYKZ7VRnQ8NruVaAQA6fN15RaUn7mJu8C955y1Isg6kT-8XfjCNGpq-sdwPZ09HD3PBsckEZ2HKfjP29M5ZGzgI8IAvLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks-detail",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						},
+						"description": "access drinks-detail endpoint with Manager account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add drink with Manager account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDU0Mjc5LCJleHAiOjE2MTQ0NjE0NzksImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.RG2QKphJI9MWa1uLKudlJQFhlTcHyDMvFDWxNFp5VWRl9-DKOAChFkNLgXPcU4hx_XvsNgYy8rRIGqPu3DbGH6AZp16bRdXyTRpNLWhdkKctbnI_ARLl2-b_Znh2wgaRkEs_FEnR9htn3NwoVNkKCLcMo-5wPPiSiE3bsp3Wbhn3ehb5Pqq7TfWepu2nFg_9dSoVqnDuux6H3SOcVgDMKIlwbgbRe3X5SEurJxPLKnKbQ7NrEF8L2mW-BnYKZ7VRnQ8NruVaAQA6fN15RaUn7mJu8C955y1Isg6kT-8XfjCNGpq-sdwPZ09HD3PBsckEZ2HKfjP29M5ZGzgI8IAvLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\": \"Green Latte\", \r\n    \"recipe\": [{\"name\": \"Green Foam\", \"color\": \"#BBE794\", \"parts\": 2}, {\"name\": \"Green Coffee\", \"color\": \"#82B157\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						},
+						"description": "Add drink with Manager account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"edit on drink with Manager account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDU0Mjc5LCJleHAiOjE2MTQ0NjE0NzksImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.RG2QKphJI9MWa1uLKudlJQFhlTcHyDMvFDWxNFp5VWRl9-DKOAChFkNLgXPcU4hx_XvsNgYy8rRIGqPu3DbGH6AZp16bRdXyTRpNLWhdkKctbnI_ARLl2-b_Znh2wgaRkEs_FEnR9htn3NwoVNkKCLcMo-5wPPiSiE3bsp3Wbhn3ehb5Pqq7TfWepu2nFg_9dSoVqnDuux6H3SOcVgDMKIlwbgbRe3X5SEurJxPLKnKbQ7NrEF8L2mW-BnYKZ7VRnQ8NruVaAQA6fN15RaUn7mJu8C955y1Isg6kT-8XfjCNGpq-sdwPZ09HD3PBsckEZ2HKfjP29M5ZGzgI8IAvLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cappuchino\",\r\n    \"recipe\": [{\"color\": \"#F6F2E6\", \"name\": \"Foam\", \"parts\": 1}, {\"color\": \"#E3D7B4\", \"name\": \"Milk\", \"parts\": 1}, {\"color\": \"#2E1A08\", \"name\": \"Espresso\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/drinks/4",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"4"
+							]
+						},
+						"description": "edit on drink with Manager account"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:5000/drinks/5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"delete drink with Manager account\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNSMHlfVTBIeTZHVzBFREhTaEQzeiJ9.eyJpc3MiOiJodHRwczovL3BldGVyLWRldi51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjAzMTExMmE4ZmVhM2UwMDY4NmNiYWM2IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwIiwiaWF0IjoxNjE0NDU0Mjc5LCJleHAiOjE2MTQ0NjE0NzksImF6cCI6InQ1YnhpQzU1UnNmdXFDQnczYWlZMThCV3VTNlk2aHBLIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcy1kZXRhaWwiLCJwYXRjaDpkcmlua3MiLCJwb3N0OmRyaW5rcyJdfQ.RG2QKphJI9MWa1uLKudlJQFhlTcHyDMvFDWxNFp5VWRl9-DKOAChFkNLgXPcU4hx_XvsNgYy8rRIGqPu3DbGH6AZp16bRdXyTRpNLWhdkKctbnI_ARLl2-b_Znh2wgaRkEs_FEnR9htn3NwoVNkKCLcMo-5wPPiSiE3bsp3Wbhn3ehb5Pqq7TfWepu2nFg_9dSoVqnDuux6H3SOcVgDMKIlwbgbRe3X5SEurJxPLKnKbQ7NrEF8L2mW-BnYKZ7VRnQ8NruVaAQA6fN15RaUn7mJu8C955y1Isg6kT-8XfjCNGpq-sdwPZ09HD3PBsckEZ2HKfjP29M5ZGzgI8IAvLA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/drinks/5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"5"
+							]
+						},
+						"description": "delete drink with Manager account"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
