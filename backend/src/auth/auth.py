@@ -4,10 +4,12 @@ from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
 
+from os import environ
 
-AUTH0_DOMAIN = 'peter-dev.us.auth0.com'
+
+AUTH0_DOMAIN = environ.get('AUTH0_DOMAIN', 'peter-dev.us.auth0.com')
 ALGORITHMS = ['RS256']
-API_AUDIENCE = 'http://localhost:8100'
+API_AUDIENCE = environ.get('API_AUDIENCE', 'http://localhost:8100')
 
 ## AuthError Exception
 '''
@@ -24,6 +26,8 @@ class AuthError(Exception):
 
 def get_token_auth_header():
     auth = request.headers.get('Authorization', None)
+    
+    # Check for Authorization header existance
     if not auth:
         raise AuthError({
             'code': 'authorization_header_missing',
@@ -31,18 +35,22 @@ def get_token_auth_header():
         }, 401)
 
     parts = auth.split()
+    
+    # Check if the Authorization header is bearer
     if parts[0].lower() != 'bearer':
         raise AuthError({
             'code': 'invalid_header',
             'description': 'Authorization header must start with "Bearer".'
         }, 401)
-
+        
+    # Check for Token existance
     elif len(parts) == 1:
         raise AuthError({
             'code': 'invalid_header',
             'description': 'Token not found.'
         }, 401)
 
+    # Validate the header parts
     elif len(parts) > 2:
         raise AuthError({
             'code': 'invalid_header',
@@ -54,12 +62,14 @@ def get_token_auth_header():
 
 
 def check_permissions(permission, payload):
+    # Check the existance of permissions section in the token
     if 'permissions' not in payload:
         raise AuthError({
             'code': 'invalid_claims',
             'description': 'Permissions not included in JWT.'
         }, 400)
-        
+    
+    # Check if the user have permissions to hit the endpoint
     if permission not in payload['permissions']:
         raise AuthError({
             'code': 'unauthorized',
@@ -69,7 +79,7 @@ def check_permissions(permission, payload):
     return True
 
 
-
+# Decode the received token and extract the payload
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
