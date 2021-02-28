@@ -4,12 +4,16 @@ from sqlalchemy import exc
 import json
 from flask_cors import CORS
 
+from flasgger import Swagger
+
 from .database.models import db_drop_and_create_all, setup_db, Drink
 from .auth.auth import AuthError, requires_auth
 
 app = Flask(__name__)
 setup_db(app)
 CORS(app)
+# access http://localhost:5000/apidocs to show generated documentation by swagger
+Swagger(app)
 
 #db_drop_and_create_all()
 
@@ -17,6 +21,44 @@ CORS(app)
 # Main page endpoint for public 
 @app.route('/drinks', methods=['GET'])
 def get_drinks():
+    
+    #swagger documentation for drinks endpoint
+    """
+    This is coffee shop drinks API
+    Call this api return the drinks in the audacity coffee shop
+    ---
+    tags:
+      - coffee shop full stack API
+    parameters:
+      - name: drinks
+        in: path
+        type: list
+        required: true
+        description: drinks in the coffee shop
+      - name: success
+        in: query
+        type: boolean
+        description: success flag
+    responses:
+      200:
+        description: drinks in the coffee shop
+        schema:
+          id: drink
+          properties:
+            title:
+              type: string
+              description: the drink name
+              default:""
+            recipe:
+              type: array
+              description: list of drink's parts
+              items:
+                type: object
+                additionalProperties:
+                    type: string
+              default: [{"color": "#ffffff", "name": "", "parts": 1}]
+    """
+    
     drinks = Drink.query.all()
     short_form_drinks = [drink.short() for drink in drinks]
     
@@ -48,10 +90,11 @@ def post_drink(payload):
     try:
         new_drink = Drink()
         new_drink.title = drink_details['title']
-        new_drink.recipe = json.dumps(drink_details['recipe'])
+        recipe = drink_details['recipe']
+        new_drink.recipe = recipe if type(recipe) == str else json.dumps(recipe)
         new_drink.insert()
 
-    except:
+    except Exception:
         abort(400)
 
     return jsonify({
@@ -73,10 +116,11 @@ def patch_drink(payload, id):
 
     try:
         selected_drink.title = edited_data['title']
-        selected_drink.recipe = json.dumps(edited_data['recipe'])
+        recipe = edited_data['recipe']
+        selected_drink.recipe = recipe if type(recipe) == str else json.dumps(recipe) 
         selected_drink.update()
         
-    except:
+    except Exception:
         abort(400)
 
     return jsonify({
@@ -97,7 +141,7 @@ def delete_drink(payload, id):
     try:
         deleted_drink.delete()
         
-    except:
+    except Exception:
         abort(400)
 
     return jsonify({'success': True, 'delete': id}), 200
